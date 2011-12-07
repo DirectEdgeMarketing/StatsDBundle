@@ -8,12 +8,33 @@ namespace SM\StatsDBundle;
  * */
 class StatsD
 {
+	/**
+	 * @var string
+	 */
+	private $host;
 
-    public function __construct($host, $port, $noop = false) {
+	/**
+	 * @var int
+	 */
+	private $port;
+
+	/**
+	 * @var bool
+	 */
+	private $noop;
+
+	/**
+	 * @param $host
+	 * @param $port
+	 * @param bool $noop
+	 */
+    public function __construct($host, $port, $noop = false, $prefix = '') {
         $this->host = $host;
         $this->port = $port;
         $this->noop = $noop;
+		$this->prefix = $prefix;
     }
+
     /**
      * Log timing information
      *
@@ -112,7 +133,7 @@ class StatsD
                 throw new \Exception("Could not open statd connection to $host:$port");
             }
             foreach ($sampledData as $stat => $value) {
-                $msg = "$stat:$value";
+                $msg = "{$this->getPrefixedStat($stat)}:$value";
                 socket_sendto($socket, $msg, strlen($msg), 0, $host, $port); 
             }
             socket_close($socket);
@@ -121,5 +142,8 @@ class StatsD
         }
     }
 
-
+	private function getPrefixedStat($stat)
+	{
+		return $this->prefix . $stat;
+	}
 }
