@@ -24,9 +24,17 @@ class StatsD
 	private $noop;
 
 	/**
+	 * @var string
+	 */
+	private $prefix;
+
+	/**
 	 * @param $host
 	 * @param $port
 	 * @param bool $noop
+	 * @param string $prefix
+	 * @return \SM\StatsDBundle\StatsD
+	 *
 	 */
     public function __construct($host, $port, $noop = false, $prefix = '') {
         $this->host = $host;
