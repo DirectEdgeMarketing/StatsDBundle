@@ -20,11 +20,12 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('statsd');
+        $rootNode = $treeBuilder->root('sm_stats_d');
         $rootNode->children()
             ->scalarNode("port")->defaultValue(8125)->end()
             ->scalarNode("host")->defaultValue("localhost")->end()
-            ->scalarNode("noop")->defaultValue(false)->end()
+			->scalarNode("noop")->defaultValue(false)->end()
+			->scalarNode("prefix")->isRequired()->end()
             ->end();
         return $treeBuilder;
     }

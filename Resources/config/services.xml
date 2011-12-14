@@ -14,7 +14,8 @@
         <service id="statsd" class="SM\StatsDBundle\StatsD">
             <argument>%statsd.host%</argument>
             <argument>%statsd.port%</argument>
-            <argument>%statsd.noop%</argument>
+			<argument>%statsd.noop%</argument>
+			<argument>%statsd.prefix%</argument>
         </service>
     </services>
 </container>

@@ -27,6 +27,7 @@ class SMStatsDExtension extends Extension
 
         $container->setParameter("statsd.host", $config['host']);
         $container->setParameter("statsd.port", $config['port']);
-        $container->setParameter("statsd.noop", $config['noop']);
+		$container->setParameter("statsd.noop", $config['noop']);
+		$container->setParameter("statsd.prefix", $config['prefix']);
     }
 }
