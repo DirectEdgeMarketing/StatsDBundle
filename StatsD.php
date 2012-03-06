@@ -40,6 +40,12 @@ class StatsD
         $this->host = $host;
         $this->port = $port;
         $this->noop = $noop;
+
+		if (!empty($prefix)) {
+			$prefix = trim($prefix, '.');
+			$prefix .= '.';
+		}
+
 		$this->prefix = $prefix;
     }
 
