@@ -37,7 +37,10 @@ class StatsDWrapper
 	 */
 	public static function timing($stat, $time, $sampleRate = 1.0)
 	{
-		static::$instance->timing($stat, $time, $sampleRate);
+		if (static::$instance)
+		{
+			static::$instance->timing($stat, $time, $sampleRate);
+		}
 	}
 
 	/**
@@ -48,7 +51,10 @@ class StatsDWrapper
 	 */
 	public static function increment($stat, $sampleRate = 1.0)
 	{
-		static::$instance->increment($stat, $sampleRate);
+		if (static::$instance)
+		{
+			static::$instance->increment($stat, $sampleRate);
+		}
 	}
 
 	/**
@@ -59,6 +65,9 @@ class StatsDWrapper
 	 */
 	public static function decrement($stat, $sampleRate = 1.0)
 	{
-		static::$instance->decrement($stat, $sampleRate);
+		if (static::$instance)
+		{
+			static::$instance->decrement($stat, $sampleRate);
+		}
 	}
 }
