@@ -35,7 +35,7 @@ class StatsDWrapper
 	 * @param float $time
 	 * @param float $sampleRate
 	 */
-	public static function timing($stat, $time, $sampleRate = 1.0)
+	public static function timing($stat, $time, $sampleRate = 1)
 	{
 		if (self::$instance)
 		{
@@ -49,7 +49,7 @@ class StatsDWrapper
 	 * @param $stat
 	 * @param float $sampleRate
 	 */
-	public static function increment($stat, $sampleRate = 1.0)
+	public static function increment($stat, $sampleRate = 1)
 	{
 		if (self::$instance)
 		{
@@ -63,7 +63,7 @@ class StatsDWrapper
 	 * @param string $stat
 	 * @param float $sampleRate
 	 */
-	public static function decrement($stat, $sampleRate = 1.0)
+	public static function decrement($stat, $sampleRate = 1)
 	{
 		if (self::$instance)
 		{
